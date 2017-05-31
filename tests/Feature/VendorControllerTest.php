@@ -52,4 +52,27 @@ class VendorControllerTest extends TestCase
 
 		$response->assertJson($expected);
 	}
+
+	public function testGetReturnsAListOfAllVendors() 
+	{
+        $vendor = factory(\App\Vendor::class)->create([
+			'name' => 'Pofay'
+		]);
+
+
+		$expected = [
+			'vendors' =>
+		   	[
+				[
+				    'id' => $vendor->id,
+				    'name' => $vendor->name
+				]
+			]
+		];
+
+
+		$response = $this->get('api/v1/vendor');
+
+		$response->assertJson($expected);
+	}
 }

@@ -10,7 +10,14 @@ class VendorController extends Controller
 {
 	public function index()
 	{
-
+		$vendors = Vendor::first();
+		$response =[
+			'vendors' => 
+			[
+				$vendors
+			]
+		];
+		return response()->json($response,200);
 	}
    public function store(Request $request)
     {
@@ -40,7 +47,6 @@ class VendorController extends Controller
 		];
 
 		return response()->json($response,200);
-		
     }
 
     /**
