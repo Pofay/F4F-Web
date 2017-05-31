@@ -3,36 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Vendor;
+use App\Item;
 
 class VendorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+	public function index()
+	{
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+	}
+   public function store(Request $request)
     {
         //
     }
@@ -46,6 +26,21 @@ class VendorController extends Controller
     public function show($id)
     {
         //
+		$items = Item::where('vendor_id' , $id)->first();
+		$response = [
+			'vendor_name' => 'Pofay',
+			'items' => 
+			[
+				'id' => $items->id,
+				'vendor_id' => $items->vendor_id,
+				'name' => $items->name,
+				'quantity' => $items->quantity,
+				'price' => $items->price
+			]
+		];
+
+		return response()->json($response,200);
+		
     }
 
     /**

@@ -14,10 +14,42 @@ class VendorControllerTest extends TestCase
      *
      * @return void
      */
+	use DatabaseMigrations;
+
     public function testGetReturnsResponseWithCorrectStatusCode()
     {
         $response = $this->get('/api/v1/vendor');
 
         $response->assertStatus(200);
     }
+
+	public function testGetWithIdReturnsCorrespondingVendor()
+	{
+		$vendor = factory(\App\Vendor::class)->create([
+			'name' => 'Pofay'
+		]);
+
+		$item = factory(\App\Item::class)->create([
+			'vendor_id' => $vendor->id,
+			'name' => 'Potato',
+			'quantity' => 6,
+			'price' => 4.25
+		]);
+	
+		$expected = [
+			'vendor_name' => 'Pofay',
+			'items' => 
+			[
+				'vendor_id' => $vendor->id,
+				'id' => $item->id,
+				'name' => 'Potato',
+				'quantity' => 6,
+				'price' => 4.25
+			]
+		];
+
+		$response = $this->get('/api/v1/vendor/'.$vendor->id);
+
+		$response->assertJson($expected);
+	}
 }
