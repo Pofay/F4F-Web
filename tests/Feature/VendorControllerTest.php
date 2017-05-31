@@ -7,16 +7,16 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class VendorControllerTest extends TestCase
 {
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testGetReturnsResponseWithCorrectStatusCode()
     {
-        $response = $this->get('/');
+        $response = $this->get('/api/v1/vendor');
 
         $response->assertStatus(200);
     }
