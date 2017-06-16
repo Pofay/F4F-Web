@@ -14,7 +14,6 @@ class VendorControllerTest extends TestCase
      *
      * @return void
      */
-	use DatabaseMigrations;
 
     public function testGetReturnsResponseWithCorrectStatusCode()
     {
@@ -33,8 +32,22 @@ class VendorControllerTest extends TestCase
 		$response = $this->post('api/vendors', $json);
 
 		$response->assertStatus(201);
-
     }
+
+	public function testGetAfterPostReturnsPostedVendor()
+	{
+         $json = [
+			'name' => 'Johnny Blaze',
+			'password' => Hash::make('blazing')
+		];
+
+		$this->post('api/vendors', $json);
+		$response = $this->get('api/vendors');
+
+		$response->assertJson([
+			'vendors' => [['id' => 1,'name' => 'Johnny Blaze']]
+		]);
+	}
 
 
 }
