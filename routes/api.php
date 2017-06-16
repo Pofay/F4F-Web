@@ -19,5 +19,7 @@ $api->version('v1', function($api)
 {
 	$api->get('vendors', 'App\Http\Controllers\VendorController@index');
 
+	$api->post('vendors', 'App\Http\Controllers\VendorController@create');
+
 });
 

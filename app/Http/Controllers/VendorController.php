@@ -12,4 +12,9 @@ class VendorController extends Controller
 	{
 		return response('',200);
 	}
+
+	public function create(Request $request)
+	{
+		return $this->response->created();
+	}
 }
