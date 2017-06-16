@@ -13,8 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['prefix' => 'v1'], function() 
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', function($api)
 {
-	Route::resource('vendor', 'VendorController');
 
 });
+
