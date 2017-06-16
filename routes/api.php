@@ -17,7 +17,7 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function($api)
 {
-	$api->get(
+	$api->get('vendors', 'App\Http\Controllers\VendorController@index');
 
 });
 

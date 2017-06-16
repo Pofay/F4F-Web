@@ -18,7 +18,7 @@ class VendorControllerTest extends TestCase
 
     public function testGetReturnsResponseWithCorrectStatusCode()
     {
-        $response = $this->get('/api/v1/vendor');
+        $response = $this->get('api/vendors');
 
         $response->assertStatus(200);
     }

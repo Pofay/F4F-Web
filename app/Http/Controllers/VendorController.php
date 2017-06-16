@@ -10,5 +10,6 @@ class VendorController extends Controller
 {
 	public function index()
 	{
+		return response('',200);
 	}
 }
