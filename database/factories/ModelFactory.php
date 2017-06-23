@@ -22,19 +22,4 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Vendor::class, function (Faker\Generator $faker)
-{
-	return [
-		'name' => $faker->name
-	];
-});
 
-$factory->define(App\Item::class, function (Faker\Generator $faker)
-{
-	return [
-		'vendor_id' => 0,
-		'name' => $faker->name,
-		'quantity' => 0,
-		'price' => 0.0
-	];
-});
