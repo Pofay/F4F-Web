@@ -21,5 +21,7 @@ $api->version('v1', function($api)
 
 	$api->post('vendors', 'App\Http\Controllers\VendorController@create');
 
+	$api->get('vendors/{id}', 'App\Http\Controllers\VendorController@show');
+
 });
 
