@@ -9,6 +9,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Hash;
 class VendorControllerTest extends TestCase
 {
+	use DatabaseMigrations;
     /**
      * A basic test example.
      *
@@ -49,10 +50,19 @@ class VendorControllerTest extends TestCase
 		);
 	}
 
-	public function testFoo()
+	public function testGetWithVendorIdReturnsVendorInformation()
 	{
-		
+		$user = factory(\App\User::class)->create(
+			[
+				'name' => 'Pofay'
+			]
+		);
 
+		$response = $this->get("api/vendors/". $user->id);
+		
+		$response->assertJsonFragment(
+			['id' => $user->id, 'name' => $user->name , 'products_link' => 'api/vendors/2/products' , 'method' => 'GET']
+		);
 	}
 
 
