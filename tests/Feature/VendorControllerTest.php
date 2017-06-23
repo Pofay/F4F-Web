@@ -58,10 +58,10 @@ class VendorControllerTest extends TestCase
 			]
 		);
 
-		$response = $this->get("api/vendors/". $user->id);
+		$response = $this->get('api/vendors/'. $user->id);
 		
 		$response->assertJsonFragment(
-			['id' => $user->id, 'name' => $user->name , 'products_link' => 'api/vendors/2/products' , 'method' => 'GET']
+			['id' => $user->id, 'name' => $user->name , 'products_link' => 'api/vendors/'.$user->id.'/products' , 'method' => 'GET']
 		);
 	}
 
