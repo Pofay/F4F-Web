@@ -16,4 +16,8 @@ class VendorController extends Controller
 	{
 		return $this->response->created();
 	}
+
+	public function show($id)
+	{
+	}
 }
