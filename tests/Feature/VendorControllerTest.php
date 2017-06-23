@@ -44,9 +44,15 @@ class VendorControllerTest extends TestCase
 		$this->post('api/vendors', $json);
 		$response = $this->get('api/vendors');
 
-		$response->assertJson([
-			'vendors' => [['id' => 1,'name' => 'Johnny Blaze']]
-		]);
+		$response->assertJsonFragment(
+			['id' => 1,'name' => 'Johnny Blaze']
+		);
+	}
+
+	public function testFoo()
+	{
+		
+
 	}
 
 
