@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Transformers\UserTransformer;
 
 class VendorController extends Controller
 {
@@ -19,14 +21,16 @@ class VendorController extends Controller
 
 	public function show($id)
 	{
-		return response()->json([
+		$user = User::findOrfail($id);
+/*		return response()->json([
 			'vendor' => 
 			[
-				'id' => 1,
-				'name' => 'Pofay',
-				'products_link' => 'api/vendors/'.$id.'/products',
+				'id' => $user->id,
+				'name' => $user->name,
+				'products_link' => 'api/vendors/'.$user->id.'/products',
 				'method' => 'GET'
 			]
-		]);
+		]); */
+		return $this->response->item($user, new UserTransformer);
 	}
 }
