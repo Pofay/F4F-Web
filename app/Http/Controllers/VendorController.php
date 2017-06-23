@@ -22,15 +22,6 @@ class VendorController extends Controller
 	public function show($id)
 	{
 		$user = User::findOrfail($id);
-/*		return response()->json([
-			'vendor' => 
-			[
-				'id' => $user->id,
-				'name' => $user->name,
-				'products_link' => 'api/vendors/'.$user->id.'/products',
-				'method' => 'GET'
-			]
-		]); */
-		return $this->response->item($user, new UserTransformer);
+    	return $this->response->item($user, new UserTransformer);
 	}
 }
